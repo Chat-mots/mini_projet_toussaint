@@ -60,3 +60,4 @@ if __name__=="__main__":
     print(p.est_vide())
     p.empiler("INIT")
     p.visualiser()
+    

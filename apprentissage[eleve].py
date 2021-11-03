@@ -14,7 +14,7 @@ class programme:
         pass
         
     def gestion_commandes(self):
-         pass
+        pass
                     
     def import_sr(self,nom_fich=fich_sr):
         with open(nom_fich, 'r') as sr:
@@ -28,13 +28,18 @@ class programme:
                     l.ajouter(ligne[x])
                 commandes_base.append(l.racine.contenu)
                 commandes_sr.append(l)
-                # l.parcourir()
 
     def trouver_sr(self,nom):
         pass
                 
     def homogenise(self):
-        pass
+        """
+        transforme la pile que lui a envoyé gestion_commandes
+        ---
+        renvoie une liste chainé avant arrière en ayant converti les subroutines
+        """
+        lcaa = liste_chaine_AA()
+        cel_lcaa = lcaa.racine
         
     def transfert_file(self,lc):
         pass
@@ -42,11 +47,5 @@ class programme:
     def executer(self,f):
         pass
         
-                    
-prog=programme()
-
-prog.import_sr()
-# print(commandes_base)
-print("commandes_sr : ", commandes_sr)
-prog.homogenise()
-# print(liste_chaine_AA.parcourir(commandes_sr[0]))
+if __name__ == "__main__":
+    prog = programme()
