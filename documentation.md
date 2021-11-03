@@ -52,7 +52,11 @@ TAD dont le fonctionnement est l'empilement/depilement : L'element entre en dern
 </ul>
 <h4> Méthodes : </h4>
 <ul>
-    <li><strong>est_vide</strong> : 
+    <li><strong>est_vide</strong> : Renvoie True si le nbr_elements = 0, renvoie False dans le cas contraire
+    <li><strong>enfiler (element)</strong> : Ajoute un élément dans la liste, à l'index de fin, puis incrémentes de 1 l'index de fin.
+    <li><strong> defiler </strong> : Renvoie l'élément à l'index de début, puis remplace l'élément à l'index de début par None. Incrémentes ensuite l'index de début de 1.
+    <li><strong> sommet </strong> : Renvoie l'élément à l'index de début, sans le supprimer ni incrémenter l'index de début.
+    <li><strong>nombre_elements</strong> : Renvoie nbr_elements
 <h2> Classe PROGRAMME </h2>
 <h4> Attributs : </h4>
     <li><strong> p </strong> => instance de la classe pile : Pile du programme
