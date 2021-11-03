@@ -60,9 +60,9 @@ TAD dont le fonctionnement est l'empilement/depilement : L'element entre en dern
     <li><strong> file </strong> => Au début None, plus tard une instance de la classe file, de taille égale au nombre de l'élément de lcaa : file du programme
 <h4> Méthodes : </h4>
 <ul>
-    <li><strong> gestion_commandes </strong> : Boucle while qui récupère les commandes de l'utilisateur, et vérifie chaque commande entrée par l'utilisateur afin de vérifier qu'elle existe bien, puis l'empile dans p si c'est une commande base, ou l'exécute si c'est une commande_prog.
-    <li><strong> import_sr </strong> : Récupères les commandes sr de sr.txt, les ajoutes aux commandes de base du programme, et ajoutes leur lcaa dans commandes_sr du fichier config.py
-    <li><strong>homogenise</strong> : Récupères la pile du programme en faisant une deepcopy de cette dernière, puis convertit la copie en liste chaînée avant arrière, en insérant correctement chaque cellule composant les commandes sr (il ne faut pas insérer les racines !). 
+    <li><strong> gestion_commandes </strong> : Boucle while qui récupère les commandes de l'utilisateur, et vérifie chaque commande entrée par l'utilisateur afin de vérifier qu'elle existe bien, puis l'empile dans p si c'est une commande base, ou l'exécute si c'est une commande_prog. Retourne une pile.
+    <li><strong> import_sr </strong> : Récupères les commandes sr de sr.txt, les ajoutes aux commandes de base du programme, et ajoutes leur lcaa dans commandes_sr du fichier config.py. Retourne des lcaa pour chaque subroutines.
+    <li><strong>homogenise</strong> : Récupères la pile du programme en faisant une deepcopy de cette dernière, puis convertit la copie en liste chaînée avant arrière, en insérant correctement chaque cellule composant les commandes sr (il ne faut pas insérer les racines !). Retourne une file.
     <li><strong>transfert_file</strong> : Récupères la lcaa du programme en la deepcopiant, récupère le nombre d'éléments de la lcaa en la parcourant (ne pas compter la racine), puis crée une file (en écrasant self.file du programme) de la taille du nombre d'éléments de la lcaa. Convertit ensuite chaque élément non-racine de la lcaa en éléments de la file.
     <li><strong>executer</strong> : Affiches la file du programme
 </ul>
