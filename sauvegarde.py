@@ -3,7 +3,6 @@ from config import *
 from pile import *
 from cellule import *
 from commandes import *
-from file import *
 
 class programme:
     def import_sr(self,nom_fich=fich_sr):
@@ -63,4 +62,4 @@ class programme:
 
 prog = programme()
 prog.import_sr()
-prog.homogenise()
+print(prog.homogenise())

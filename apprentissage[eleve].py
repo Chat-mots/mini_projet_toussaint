@@ -1,4 +1,5 @@
 from sys import intern
+from file_circ import *
 from pile import *
 from config import *
 from lcAA import *
@@ -42,7 +43,7 @@ class programme:
         cel_lcaa = lcaa.racine
         index = 0
         self.pile = ['UP','INIT','DOWN']
-        mafile = []
+        mafile = File_circ(len(self.pile)+10)
         for x in self.pile:
             lcaa.ajouter(x)
             for test in range(len(commandes_sr)): # test devient l'index d'une liste chainé dans commandes_sr
@@ -71,10 +72,11 @@ class programme:
         cel_lcaa = lcaa.racine.suivant
 
         while cel_lcaa.suivant != None:
-            mafile.append(cel_lcaa.contenu)
+            mafile.enfiler(cel_lcaa.contenu)
             cel_lcaa = cel_lcaa.suivant
-        mafile.append(cel_lcaa.contenu)
+        mafile.enfiler(cel_lcaa.contenu)
         
+        print(mafile.file)
         return mafile
 
     def transfert_file(self,lc):
