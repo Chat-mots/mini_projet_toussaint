@@ -1,11 +1,33 @@
+from lcAA import *
+from config import *
+from pile import *
+from cellule import *
+from commandes import *
+from file import *
+
 class programme:
+    def import_sr(self,nom_fich=fich_sr):
+        with open(nom_fich, 'r') as sr:
+            lignes  = sr.readlines()
+            for ligne in lignes:
+                l = liste_chaine_AA()
+                ligne = ligne[:-1]
+                ligne = ligne.split(";")
+                l.racine.contenu = ligne[0]
+                for x in range(1,len(ligne)):
+                    l.ajouter(ligne[x])
+                commandes_base.append(l.racine.contenu)
+                commandes_sr.append(l)
+    
     def homogenise(self):
         lcaa = liste_chaine_AA()
         cel_lcaa = lcaa.racine
         index = 0
+        self.pile = ['UP','INIT','DOWN']
+        mafile = []
         # cel_courant = commandes_sr[0].racine # cette cellule nous permettra de parcourir la liste de commandes spécial
         # cel_courant = cel_courant.suivant # utiliser pour ne pas avoir comme contenu le contenu de la racine
-        for x in commande():
+        for x in self.pile:
             lcaa.ajouter(x)
             for test in range(len(commandes_sr)): # test devient l'index d'une liste chainé dans commandes_sr
                 liste = commandes_sr[test] # liste est une liste chainé de commandes_sr
@@ -28,4 +50,17 @@ class programme:
                         index-=1
                 cel_lcaa = cel_lcaa.suivant
                 index += 1
-        print(lcaa.parcourir())
+            lcaa.parcourir()
+
+        cel_lcaa = lcaa.racine.suivant
+
+        while cel_lcaa.suivant != None:
+            mafile.append(cel_lcaa.contenu)
+            cel_lcaa = cel_lcaa.suivant
+        mafile.append(cel_lcaa.contenu)
+        
+        return mafile
+
+prog = programme()
+prog.import_sr()
+prog.homogenise()
