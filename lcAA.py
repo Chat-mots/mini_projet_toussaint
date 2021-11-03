@@ -1,5 +1,6 @@
 from cellule import *
 
+
 class liste_chaine_AA:
     """
      ATTRIBUTS :
@@ -8,11 +9,17 @@ class liste_chaine_AA:
 
      METHODES :
      est_vide : -> BOOLEEN : retourne VRAI si la liste est vide, FAUX sinon.
-     ajouter : CELLULE -> CELLULE: ajoute une cellule à la fin de la liste et retourne l'@ de la cellule
-     inserer : CELLULE,CONTENU -> CELLULE: ajoute une cellule après la cellule c et retourne l'@ de la cellule
+
+     ajouter : CELLULE -> CELLULE: ajoute une cellule à la fin de la liste et
+        retourne l'@ de la cellule
+
+     inserer : CELLULE,CONTENU -> CELLULE: ajoute une cellule après la
+        cellule c et retourne l'@ de la cellule
+
      supprimer : supprime la cellule cellule_sup.
-     trouver: CONTENU -> CELLULE: retourne l'@ de la première cellule dont le contenu est contenu.
-    None sinon
+
+     trouver: CONTENU -> CELLULE: retourne l'@ de la première cellule dont le
+        contenu est contenu.
     """
 
     def __init__(self) -> None:
@@ -24,12 +31,12 @@ class liste_chaine_AA:
         ---
         renvoie True si c'est vide, False sinon
         """
-        if self.racine.suivant == None:
+        if self.racine.suivant is None:
             return True
         else:
             return False
-        
-    def ajouter(self,c):
+
+    def ajouter(self, c):
         '''
         ajoute une cellule de contenu c à la fin de la lcaa
         ---
@@ -40,35 +47,31 @@ class liste_chaine_AA:
         cell = cellule()
         cell.modifier(c)
         cel_courant = self.racine
-        
-        while cel_courant.suivant != None:
-            # Je passe à la cellule suivante et regarde si elle point vers une autre = je parcours ma liste
+
+        while cel_courant.suivant is None:
             cel_courant = cel_courant.suivant
-        
-        # je pointe quel est la cellule précédente dans ma cellule actuelle (dans la variable prec)
+
         cell.prec = cel_courant
-        # je pointe que est la cellule suivante dans ma cellule précédente (dans la variable suivant)
         cel_courant.suivant = cell
-        # print(cell.afficher())
         return cell
-    
+
     def parcourir(self):
         cel_courant = self.racine
         liste_index = []
 
-        while cel_courant.suivant != None:
+        while cel_courant.suivant is not None:
             liste_index.append(cel_courant)
             cel_courant.afficher()
             print("\n")
             cel_courant = cel_courant.suivant
-            
-            if cel_courant.suivant == None:
+
+            if cel_courant.suivant is None:
                 liste_index.append(cel_courant)
                 cel_courant.afficher()
                 print("\n")
         return liste_index
 
-    def inserer(self,p,c):
+    def inserer(self, p, c):
         """
         permet d'inserer une cellule de contenu p après la cellule d'index c
         ----------
@@ -84,21 +87,21 @@ class liste_chaine_AA:
 
         while baladeur != objectif:
             cel_courant = cel_courant.suivant
-            baladeur+=1
-            if cel_courant.suivant == None:
+            baladeur += 1
+            if cel_courant.suivant is None:
                 return "la valeur entrée est out of range"
         baladeur = 0
 
         while baladeur != objectif+1:
             cel_courant_suivant = cel_courant_suivant.suivant
-            baladeur+=1 
-        
+            baladeur += 1
+
         cel_ajout.prec = cel_courant
         cel_ajout.suivant = cel_courant_suivant
         cel_courant_suivant.prec = cel_ajout
         cel_courant.suivant = cel_ajout
 
-    def trouver(self,contenu):
+    def trouver(self, contenu):
         liste_index = chaine.parcourir()
         trouvee = None
         baladeur = 0
@@ -109,8 +112,8 @@ class liste_chaine_AA:
                 return "introuvable"
             if liste_index[baladeur].contenu == contenu:
                 trouvee = contenu
-            baladeur+=1
-        
+            baladeur += 1
+
         return liste_index[baladeur-1]
 
     def supprimer(self, cellule_sup):
@@ -125,15 +128,16 @@ class liste_chaine_AA:
 
         for h in range(cellule_sup-1):
             cel_prec = cel_prec.suivant
-        
+
         for w in range(cellule_sup+1):
             cel_suiv = cel_suiv.suivant
 
         cel_prec.suivant = cel_suiv
-        if cel_suiv != None:
+        if cel_suiv is not None:
             cel_suiv.prec = cel_prec
-        
-        return print("la cellule d'index ", cellule_sup," a bien été supprimé")
+
+        return print("la cellule d'index ", cellule_sup, " a été supprimé")
+
 
 chaine = liste_chaine_AA()
 
@@ -141,7 +145,7 @@ if __name__ == "__main__":
     chaine.ajouter("a")
     chaine.ajouter("b")
     chaine.ajouter('c')
-    print(chaine.inserer("poil",2))
+    print(chaine.inserer("poil", 2))
     print(chaine.trouver("a"))
     print(chaine.supprimer(2))
     print(chaine.parcourir())
