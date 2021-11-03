@@ -19,12 +19,24 @@ class liste_chaine_AA:
         self.racine = cellule()
 
     def est_vide(self):
+        """
+        permet de savoir si la lcaa est vide ou pas.
+        ---
+        renvoie True si c'est vide, False sinon
+        """
         if self.racine.suivant == None:
             return True
         else:
             return False
         
     def ajouter(self,c):
+        '''
+        ajoute une cellule de contenu c à la fin de la lcaa
+        ---
+        c : contenu à ajouter, peut être n'importe quoi
+        ---
+        renvoie la cellule qui vient d'être ajouté
+        '''
         cell = cellule()
         cell.modifier(c)
         cel_courant = self.racine
@@ -62,8 +74,6 @@ class liste_chaine_AA:
         ----------
         p: contenu de la cellule
         c: index de la cellule
-        ----------
-        c'est tout
         """
         cel_ajout = cellule()
         cel_ajout.modifier(p)

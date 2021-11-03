@@ -18,6 +18,11 @@ class programme:
         pass
                     
     def import_sr(self,nom_fich=fich_sr):
+        """
+        transforme les instructions de subroutines dans sr.txt en lcaa
+        ---
+        crée une lcaa par subroutine
+        """
         with open(nom_fich, 'r') as sr:
             lignes  = sr.readlines()
             for ligne in lignes:
@@ -35,7 +40,9 @@ class programme:
                 
     def homogenise(self):
         """
-        transforme la pile que lui a envoyé gestion_commandes
+        transforme la pile que lui a envoyé gestion_commandes en lcaa et en file
+        ---
+        pilerecu : pile qui sera transformé en file
         ---
         renvoie une file de toutes les actions que devra effectuer le robot
         """
@@ -43,11 +50,20 @@ class programme:
         cel_lcaa = lcaa.racine
         index = 0
         # self.pile sera un DEEPCOPY de la pile reçu !!
-        self.pile = ['UP','INIT','DOWN'] # sera le paramètre reçu par gestion_commande +
+        self.pile = ['UP','INIT','DOWN'] # sera le paramètre reçu par gestion_commande (bourré en attendant)
+        
+        # au cas où le paramètre reçu est une pile vide, on renvoie None 
+        if self.pile == []:
+            print("la pile reçu est vide !")
+            return None
+
+        # transforme la pile reçu en lcaa
         for x in self.pile:
+            # ajout d'une action dans la lcaa
             lcaa.ajouter(x)
             for test in range(len(commandes_sr)):
                 liste = commandes_sr[test]
+                # ajout d'une subroutine dans la lcaa
                 if x == liste.racine.contenu:
                     cel_courant = liste.racine
                     cel_courant = cel_courant.suivant
@@ -93,6 +109,5 @@ class programme:
 if __name__ == "__main__":
     prog = programme()
     prog.import_sr()
-    prog.homogenise()
     # regarder la liste pour vérifier que tout marche bien :
     print(prog.homogenise())
