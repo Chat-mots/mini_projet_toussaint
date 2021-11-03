@@ -3,9 +3,9 @@ class cellule:
     classe représentant une cellule dans une liste
     ---
     ATTRIBUTS :
-    prec => adresse de cellule ou None : Adresse de la cellule précédente. None par défaut
-    suivant => adresse de cellule ou None : Adresse de la cellule suivante. None par défaut
-    contenu => N'importe quel type de donnée : Contenu de la cellule. None par défaut
+    prec => adresse de cellule : Adresse de la cellule précédente.
+    suivant => adresse de cellule : Adresse de la cellule suivante.
+    contenu => N'importe quel type de donnée : Contenu de la cellule.
     ---
     METHODES :
     modifier(contenu): Modifie le contenu de la valeur
@@ -17,7 +17,7 @@ class cellule:
         self.suivant = None
         self.contenu = None
 
-    def modifier(self,contenu):
+    def modifier(self, contenu):
         """
         permet de modifier le contenu d'une cellule
         ---
@@ -32,6 +32,7 @@ class cellule:
         print("précedent : ", self.prec)
         print("suivant : ", self.suivant)
         print("contenu : ", self.contenu)
+
 
 if __name__ == "__main__":
     cel = cellule()
