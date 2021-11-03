@@ -6,41 +6,42 @@ from lcAA import *
 from commandes import *
 from cellule import *
 
+
 class programme:
     """
     appli d'apprentissage pour le bras
     """
-    
+
     def __init__(self):
         pass
-        
+
     def gestion_commandes(self):
         pass
-                    
-    def import_sr(self,nom_fich=fich_sr):
+
+    def import_sr(self, nom_fich=fich_sr):
         """
         transforme les instructions de subroutines dans sr.txt en lcaa
         ---
         crée une lcaa par subroutine
         """
         with open(nom_fich, 'r') as sr:
-            lignes  = sr.readlines()
+            lignes = sr.readlines()
             for ligne in lignes:
-                l = liste_chaine_AA()
+                liste = liste_chaine_AA()
                 ligne = ligne[:-1]
                 ligne = ligne.split(";")
-                l.racine.contenu = ligne[0]
-                for x in range(1,len(ligne)):
-                    l.ajouter(ligne[x])
-                commandes_base.append(l.racine.contenu)
-                commandes_sr.append(l)
+                liste.racine.contenu = ligne[0]
+                for x in range(1, len(ligne)):
+                    liste.ajouter(ligne[x])
+                commandes_base.append(liste.racine.contenu)
+                commandes_sr.append(liste)
 
-    def trouver_sr(self,nom):
+    def trouver_sr(self, nom):
         pass
-                
+
     def homogenise(self):
         """
-        transforme la pile que lui a envoyé gestion_commandes en lcaa et en file
+        transforme la pile envoyé par gestion_commandes en lcaa et en file
         ---
         pilerecu : pile qui sera transformé en file
         ---
@@ -50,9 +51,10 @@ class programme:
         cel_lcaa = lcaa.racine
         index = 0
         # self.pile sera un DEEPCOPY de la pile reçu !!
-        self.pile = ['UP','INIT','DOWN'] # sera le paramètre reçu par gestion_commande (bourré en attendant)
-        
-        # au cas où le paramètre reçu est une pile vide, on renvoie None 
+        # sera le paramètre reçu par gestion_commande (bourrage en attendant)
+        self.pile = ['UP', 'INIT', 'DOWN']
+
+        # au cas où le paramètre reçu est une pile vide, on renvoie None
         if self.pile == []:
             print("la pile reçu est vide !")
             return None
@@ -67,45 +69,48 @@ class programme:
                 if x == liste.racine.contenu:
                     cel_courant = liste.racine
                     cel_courant = cel_courant.suivant
-                    
-                    while cel_courant.suivant != None:
+
+                    while cel_courant.suivant is not None:
                         lcaa.ajouter(cel_courant.contenu)
                         cel_courant = cel_courant.suivant
                     lcaa.ajouter(cel_courant.contenu)
-            while cel_lcaa.suivant != None:
+            while cel_lcaa.suivant is not None:
                 for test in range(len(commandes_sr)):
                     cel_test = commandes_sr[test].racine.contenu
                     if cel_test == cel_lcaa.contenu:
                         lcaa.supprimer(index)
-                        index-=1
+                        index -= 1
                 cel_lcaa = cel_lcaa.suivant
                 index += 1
             lcaa.parcourir()
 
-        # création de la file_circ 
+        # création de la file_circ
         cel_lcaa = lcaa.racine.suivant
         taille_file = 0
-        while cel_lcaa != None:
+        while cel_lcaa is not None:
             taille_file += 1
             cel_lcaa = cel_lcaa.suivant
         mafile = File_circ(taille_file)
 
         # ajout dans la file de toutes les actions du robots
         cel_lcaa = lcaa.racine.suivant
-        while cel_lcaa.suivant != None:
+        while cel_lcaa.suivant is not None:
             mafile.enfiler(cel_lcaa.contenu)
             cel_lcaa = cel_lcaa.suivant
         mafile.enfiler(cel_lcaa.contenu)
-        
-        print(mafile.file) # pas obligatoire, vérification que la file est correcte
+
+        # pas obligatoire, vérification que la file est correcte
+        print(mafile.file)
+
         return mafile
 
-    def transfert_file(self,lc):
+    def transfert_file(self, lc):
         pass
-    
-    def executer(self,f):
+
+    def executer(self, f):
         pass
-        
+
+
 if __name__ == "__main__":
     prog = programme()
     prog.import_sr()
