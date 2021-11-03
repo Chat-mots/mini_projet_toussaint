@@ -37,28 +37,25 @@ class programme:
         """
         transforme la pile que lui a envoyé gestion_commandes
         ---
-        renvoie une liste chainée avant arrière en ayant converti les subroutines
+        renvoie une file de toutes les actions que devra effectuer le robot
         """
         lcaa = liste_chaine_AA()
         cel_lcaa = lcaa.racine
         index = 0
-        self.pile = ['UP','INIT','DOWN']
+        self.pile = ['UP','INIT','DOWN'] # sera le paramètre reçu par gestion_commande +
         for x in self.pile:
             lcaa.ajouter(x)
-            for test in range(len(commandes_sr)): # test devient l'index d'une liste chainé dans commandes_sr
-                liste = commandes_sr[test] # liste est une liste chainé de commandes_sr
-                if x == liste.racine.contenu: # si l'action entrée est égal au contenu de la racine, c'est à dire le nom, exemple : INIT
+            for test in range(len(commandes_sr)):
+                liste = commandes_sr[test]
+                if x == liste.racine.contenu:
                     cel_courant = liste.racine
-                    # print('1 : ',cel_courant.contenu)
                     cel_courant = cel_courant.suivant
-                    # print('2 : ', cel_courant.contenu)
                     
                     while cel_courant.suivant != None:
                         lcaa.ajouter(cel_courant.contenu)
-                        # print("3 : ", cel_courant.contenu)
                         cel_courant = cel_courant.suivant
                     lcaa.ajouter(cel_courant.contenu)
-            while cel_lcaa.suivant != None: # problème : ne marche qu'une fois, pourquoi ?
+            while cel_lcaa.suivant != None:
                 for test in range(len(commandes_sr)):
                     cel_test = commandes_sr[test].racine.contenu
                     if cel_test == cel_lcaa.contenu:
@@ -68,6 +65,7 @@ class programme:
                 index += 1
             lcaa.parcourir()
 
+        # création de la file_circ 
         cel_lcaa = lcaa.racine.suivant
         taille_file = 0
         while cel_lcaa != None:
@@ -75,6 +73,7 @@ class programme:
             cel_lcaa = cel_lcaa.suivant
         mafile = File_circ(taille_file)
 
+        # ajout dans la file de toutes les actions du robots
         cel_lcaa = lcaa.racine.suivant
         while cel_lcaa.suivant != None:
             mafile.enfiler(cel_lcaa.contenu)
