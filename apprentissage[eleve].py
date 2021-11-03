@@ -43,7 +43,6 @@ class programme:
         cel_lcaa = lcaa.racine
         index = 0
         self.pile = ['UP','INIT','DOWN']
-        mafile = File_circ(len(self.pile)+10)
         for x in self.pile:
             lcaa.ajouter(x)
             for test in range(len(commandes_sr)): # test devient l'index d'une liste chainé dans commandes_sr
@@ -70,7 +69,13 @@ class programme:
             lcaa.parcourir()
 
         cel_lcaa = lcaa.racine.suivant
+        taille_file = 0
+        while cel_lcaa != None:
+            taille_file += 1
+            cel_lcaa = cel_lcaa.suivant
+        mafile = File_circ(taille_file)
 
+        cel_lcaa = lcaa.racine.suivant
         while cel_lcaa.suivant != None:
             mafile.enfiler(cel_lcaa.contenu)
             cel_lcaa = cel_lcaa.suivant
