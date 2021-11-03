@@ -3,8 +3,9 @@ from cellule import *
 
 class liste_chaine_AA:
     """
+     classe definisant une liste chainée avant arrière
+    ---
      ATTRIBUTS :
-        classe definisant une liste chainée avant arrière
      racine : CELLULE : la cellule racine de la liste
 
      METHODES :
