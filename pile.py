@@ -21,7 +21,7 @@ class pile:
         self.nbr_elements+=1
         
     def est_vide(self):
-        return self.p==[]
+        return self.nbr_elements == 0
         
     
     def depiler(self):
