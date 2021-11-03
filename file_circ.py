@@ -1,6 +1,6 @@
-class File_circ :
+class File_circ:
 
-    def __init__(self,n) :
+    def __init__(self, n):
         """
         ATTRIBUTS :
             classe définissant une file circulaire
@@ -15,53 +15,50 @@ class File_circ :
         self.index_fin = 0
         self.nbr_elements = 0
 
-    def est_vide(self) :
-        if self.nbr_elements == 0 :
+    def est_vide(self):
+        if self.nbr_elements == 0:
             return True
-        else :
+        else:
             return False
 
-    def enfiler(self,element) :
-        if self.nbr_elements < 6 :
+    def enfiler(self, element):
+        if self.nbr_elements < 6:
             self.file[self.index_fin] = element
             self.nbr_elements += 1
-            if self.index_fin < self.tmax - 1 :
+            if self.index_fin < self.tmax - 1:
                 self.index_fin += 1
-            elif self.index_fin == self.tmax -1 :
+            elif self.index_fin == self.tmax - 1:
                 self.index_fin = 0
 
-    def defiler(self) :
-        if self.est_vide() == False :
+    def defiler(self):
+        if self.est_vide() is False:
             element = self.file[self.index_debut]
-            if self.index_debut == 5 :
+            if self.index_debut == 5:
                 self.index_debut = 0
-            else :
+            else:
                 self.index_debut += 1
             self.nbr_elements -= 1
             return element
 
-    def nombre_elements(self) :
+    def nombre_elements(self):
         nbr = self.index_fin-self.index_debut
-        if nbr == -1 : 
+        if nbr == - 1:
             nbr = 6
         return nbr
 
 
-            
-
-if __name__ == "__main__" :
+if __name__ == "__main__":
     file = File_circ(6)
-    assert(file.est_vide()) == True
+    assert(file.est_vide()) is True
     assert(file.tmax) == 6
-    assert(file.est_vide()) == True
-    for x in range(6) :
+    assert(file.est_vide()) is True
+    for x in range(6):
         file.enfiler("test")
     assert(file.index_fin) == 0
     assert(file.nbr_elements) == 6
-    assert(file.est_vide()) == False
-    for x in range(6) :
+    assert(file.est_vide()) is False
+    for x in range(6):
         file.defiler()
     assert(file.index_debut) == 0
     assert(file.nbr_elements) == 0
     print("done")
-
