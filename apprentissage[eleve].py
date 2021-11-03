@@ -42,6 +42,7 @@ class programme:
         lcaa = liste_chaine_AA()
         cel_lcaa = lcaa.racine
         index = 0
+        # self.pile sera un DEEPCOPY de la pile reçu !!
         self.pile = ['UP','INIT','DOWN'] # sera le paramètre reçu par gestion_commande +
         for x in self.pile:
             lcaa.ajouter(x)
@@ -80,7 +81,7 @@ class programme:
             cel_lcaa = cel_lcaa.suivant
         mafile.enfiler(cel_lcaa.contenu)
         
-        print(mafile.file)
+        print(mafile.file) # pas obligatoire, vérification que la file est correcte
         return mafile
 
     def transfert_file(self,lc):
