@@ -49,7 +49,7 @@ class liste_chaine_AA:
         cell.modifier(c)
         cel_courant = self.racine
 
-        while cel_courant.suivant is None:
+        while cel_courant.suivant is not None:
             cel_courant = cel_courant.suivant
 
         cell.prec = cel_courant
@@ -146,10 +146,10 @@ if __name__ == "__main__":
     chaine.ajouter("a")
     chaine.ajouter("b")
     chaine.ajouter('c')
-    print(chaine.inserer("poil", 2))
+    # print(chaine.inserer("poil", 2))
     print(chaine.trouver("a"))
-    print(chaine.supprimer(2))
-    print(chaine.parcourir())
-    chaine.supprimer(0)
-    print(chaine.parcourir())
-    print(chaine.racine.suivant.contenu)
+    # print(chaine.supprimer(2))
+    # print(chaine.parcourir())
+    # chaine.supprimer(0)
+    # print(chaine.parcourir())
+    # print(chaine.racine.suivant.contenu)

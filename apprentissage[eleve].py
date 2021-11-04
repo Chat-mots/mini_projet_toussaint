@@ -1,4 +1,5 @@
 from sys import intern
+from file import File
 from file_circ import *
 from pile import *
 from config import *
@@ -84,15 +85,8 @@ class programme:
                 index += 1
             lcaa.parcourir()
 
-        # création de la file_circ
-        cel_lcaa = lcaa.racine.suivant
-        taille_file = 0
-        while cel_lcaa is not None:
-            taille_file += 1
-            cel_lcaa = cel_lcaa.suivant
-        mafile = File_circ(taille_file)
-
         # ajout dans la file de toutes les actions du robots
+        mafile = File()
         cel_lcaa = lcaa.racine.suivant
         while cel_lcaa.suivant is not None:
             mafile.enfiler(cel_lcaa.contenu)
