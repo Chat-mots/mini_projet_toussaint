@@ -82,11 +82,11 @@ if __name__ == "__main__":
 
     p = pile()
     print(isinstance(p, int))
-    assert(p.est_vide()) == True
-    assert(p.dernier()) == None
+    assert(p.est_vide()) is True
+    assert(p.dernier()) is None
     print(p.est_vide())
     p.empiler("UP")
-    assert(p.est_vide()) == False
+    assert(p.est_vide()) is False
     p.empiler("DOWN")
     assert(p.dernier()) == "DOWN"
     print(p.depiler())
@@ -95,5 +95,5 @@ if __name__ == "__main__":
     print(p.depiler())
     print(p.est_vide())
     p.empiler("INIT")
-    assert(p.est_vide()) == False
+    assert(p.est_vide()) is False
     p.visualiser()
