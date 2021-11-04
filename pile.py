@@ -1,5 +1,3 @@
-
-
 class pile:
     """ classe définissant le tad PILE
         ATTRIBUTS :
@@ -17,6 +15,13 @@ class pile:
         self.nbr_elements=0
         
     def empiler(self,element):
+        """
+        méthode qui empile l'élément element dans la file
+        -----
+        element : n'importe quoi qui peut être mis dans une file
+        -----
+        pas de renvoie
+        """
         self.p.append(element)
         self.nbr_elements+=1
         
@@ -33,7 +38,7 @@ class pile:
         return element
     
     def dernier(self):
-        element=None
+        element = None
         if not self.est_vide():
             element = self.p[-1]
         return element
