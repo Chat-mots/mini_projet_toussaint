@@ -17,7 +17,7 @@ class File:
     """
 
     def __init__(self):
-        self.file = []
+        self.file=[]
 
     def enfiler(self, element):
         """
@@ -40,9 +40,9 @@ class File:
         ---
         renvoie True si elle est vide, False sinon
         """
-        resultat = False
+        resultat=False
         if self.nombre_elements() == 0:
-            resultat = True
+            resultat=True
         return resultat
 
     def sommet(self):
@@ -64,7 +64,7 @@ class File:
 
 
 if __name__ == "__main__":
-    F1 = File()
+    F1=File()
     F1.enfiler("TRIGHT")
     F1.enfiler("TLEFT")
     F1.enfiler("D")
