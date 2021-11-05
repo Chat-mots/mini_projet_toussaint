@@ -15,7 +15,7 @@ class Programme:
     """
 
     def __init__(self):
-        pass
+        self.import_sr()
 
     def gestion_commandes(self):
         commande()
@@ -52,8 +52,6 @@ class Programme:
         lcaa = liste_chaine_AA()
         cel_lcaa = lcaa.racine
         index = 0
-        # self.pile sera un DEEPCOPY de la pile reçu !!
-        # sera le paramètre reçu par gestion_commande (bourrage en attendant)
         # self.pile = ['UP', 'INIT', 'DOWN']
         save = pilerecu
         self.pile = copy.deepcopy(save)
@@ -99,7 +97,7 @@ class Programme:
         # pas obligatoire, vérification que la file est correcte
         print("la file ressemble à ceci : ", mafile.file)
 
-        return mafile
+        return mafile.file
 
     def transfert_file(self, lc):
         pass
@@ -111,7 +109,6 @@ class Programme:
 
 if __name__ == "__main__":
     prog = Programme()
-    prog.import_sr()
     prog.executer()
     # regarder la liste pour vérifier que tout marche bien :
     # test = commande()
