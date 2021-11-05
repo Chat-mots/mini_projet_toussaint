@@ -117,4 +117,3 @@ if __name__ == "__main__":
     # test = commande()
     # prog.homogenise(test)
     # prog.gestion_commandes()
-
