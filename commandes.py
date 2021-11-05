@@ -19,8 +19,11 @@ def commande():
 
             if entre == "REM":
                 mapile.depiler()
-                mapile.depiler()
-                print("dépiler ! -> ", pile.p)
+                if mapile.est_vide() is True:
+                    print("la pile est déjà vide !")
+                else:
+                    mapile.depiler()
+                    print("dépiler ! -> ", mapile.p)
 
             if entre == "VIEW":
                 mapile.depiler()
@@ -30,6 +33,7 @@ def commande():
             if entre != "FIN":
                 print("votre commande est érroné, elle n'a pas été empiler")
 
+    mapile.depiler()  # on enlève le FIN de la pile
     print("votre pile de commande ressemble à ceci : ", mapile.p)
     print("votre pile contient ", mapile.nbr_elements, " actions.")
 
@@ -47,21 +51,31 @@ def verifier(averifier):
             essai -= 1
 
             if essai == 0:
-                return False
+                essai = len(commandes_sr)
 
-    essai = len(commandes_sr)
+                for x in commandes_sr:
 
-    for x in commandes_sr:
-        if averifier == x:
-            return True
-        else:
-            essai -= 1
+                    if averifier == x.racine:
+                        return True
 
-            if essai == 0:
-                return False
+                    else:
+                        essai -= 1
+
+                        if essai == 0:
+                            essai = len(commandes_prog)
+
+                            for x in commandes_prog:
+                                if averifier == x:
+                                    return True
+
+                                else:
+                                    essai -= 1
+
+                                    if essai == 0:
+                                        return False
 
 
 if __name__ == "__main__":
     prog = Programme()
-    prog.import_sr
+    prog.import_sr()
     print(commande())
