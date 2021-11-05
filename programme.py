@@ -38,9 +38,6 @@ class Programme:
                 commandes_base.append(liste.racine.contenu)
                 commandes_sr.append(liste)
 
-    def trouver_sr(self, nom):
-        pass
-
     def homogenise(self, pilerecu):
         """
         transforme la pile envoyé par gestion_commandes en lcaa et en file
