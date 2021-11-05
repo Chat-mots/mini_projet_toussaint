@@ -1,7 +1,8 @@
 from pile import *
 from config import *
+from programme import *
 
-pile = pile()
+mapile = pile()
 
 
 def commande():
@@ -14,25 +15,25 @@ def commande():
         test = verifier(entre)
 
         if test is True:
-            pile.empiler(entre)
+            mapile.empiler(entre)
 
             if entre == "REM":
-                pile.depiler()
-                pile.depiler()
+                mapile.depiler()
+                mapile.depiler()
                 print("dépiler ! -> ", pile.p)
 
             if entre == "VIEW":
-                pile.depiler()
-                print("voici les actions : ", pile.p)
+                mapile.depiler()
+                print("voici les actions : ", mapile.p)
 
         else:
             if entre != "FIN":
                 print("votre commande est érroné, elle n'a pas été empiler")
 
-    print("votre pile de commande ressemble à ceci : ", pile.p)
-    print("votre pile contient ", pile.nbr_elements, " actions.")
+    print("votre pile de commande ressemble à ceci : ", mapile.p)
+    print("votre pile contient ", mapile.nbr_elements, " actions.")
 
-    return pile.p
+    return mapile.p
 
 
 def verifier(averifier):
@@ -40,17 +41,6 @@ def verifier(averifier):
     essai = len(commandes_base)
 
     for x in commandes_base:
-        if averifier == x:
-            return True
-        else:
-            essai -= 1
-
-            if essai == 0:
-                return False
-
-    essai = len(commandes_prog)
-
-    for x in commandes_prog:
         if averifier == x:
             return True
         else:
@@ -72,4 +62,6 @@ def verifier(averifier):
 
 
 if __name__ == "__main__":
-    commande()
+    prog = Programme()
+    prog.import_sr
+    print(commande())

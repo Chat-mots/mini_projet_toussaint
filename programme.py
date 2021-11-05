@@ -8,7 +8,7 @@ from commandes import *
 from cellule import *
 
 
-class programme:
+class Programme:
     """
     appli d'apprentissage pour le bras
     """
@@ -106,7 +106,7 @@ class programme:
 
 
 if __name__ == "__main__":
-    prog = programme()
+    prog = Programme()
     prog.import_sr()
     # regarder la liste pour vérifier que tout marche bien :
     print(prog.homogenise())
