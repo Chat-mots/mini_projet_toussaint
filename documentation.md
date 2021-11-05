@@ -24,7 +24,7 @@ TAD dont le fonctionnement est l'empilement/depilement : L'element entre en dern
 <ul>
     <li><strong>est_vide</strong> : Renvoie True si la liste ne contient pas de cellule hormis racine, et False inversement
     <li><strong>ajouter(c)</strong> : Ajoute une cellule avec comme contenu c à la fin de la liste et renvoie l'adresse de la cellule nouvellement crée
-    <li><strong> inserer(contenu,cellule => adresse d'une cellule)</strong>: Insère une nouvelle cellule avec comme contenu contenu après la cellule cellule et renvoie l'adresse de la cellule nouvellement crée
+    <li><strong> inserer(contenu,cellule => adresse d'une cellule)</strong>: Insère une nouvelle cellule avec comme contenu contenu après la cellule cellule et renvoie l'adresse de la cellule nouvellement crée. Vériies aussi que cellule existe dans la liste chaînée, et le cas contraire renvoit un message d'erreur.
     <li><strong> parcourir</strong> : Parcourt la liste en affichant chaque contenu de chaque cellule
     <li> <strong> trouver (contenu) </strong> : Parcourt la liste jusqu'à trouver la première cellule avec comme contenu le paramètre donné, et renvoie l'adresse de la première cellule ainsi trouvée
     <li><strong> supprimer (cellule_sup => adresse d'une cellule) </strong> : Parcourt la liste jusqu'à trouver la première cellule avec comme adresse cellule_sup et supprimes la cellule trouvée ainsi
