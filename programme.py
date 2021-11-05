@@ -6,6 +6,7 @@ from config import *
 from lcAA import *
 from commandes import *
 from cellule import *
+import copy
 
 
 class Programme:
@@ -40,7 +41,7 @@ class Programme:
     def trouver_sr(self, nom):
         pass
 
-    def homogenise(self):
+    def homogenise(self, pilerecu):
         """
         transforme la pile envoyé par gestion_commandes en lcaa et en file
         ---
@@ -53,7 +54,9 @@ class Programme:
         index = 0
         # self.pile sera un DEEPCOPY de la pile reçu !!
         # sera le paramètre reçu par gestion_commande (bourrage en attendant)
-        self.pile = ['UP', 'INIT', 'DOWN']
+        # self.pile = ['UP', 'INIT', 'DOWN']
+        save = pilerecu
+        self.pile = copy.deepcopy(save)
 
         # au cas où le paramètre reçu est une pile vide, on renvoie None
         if self.pile == []:
@@ -94,20 +97,24 @@ class Programme:
         mafile.enfiler(cel_lcaa.contenu)
 
         # pas obligatoire, vérification que la file est correcte
-        print(mafile.file)
+        print("la file ressemble à ceci : ", mafile.file)
 
         return mafile
 
     def transfert_file(self, lc):
         pass
 
-    def executer(self, f):
-        pass
+    def executer(self):
+        ex = commande()
+        self.homogenise(ex)
 
 
 if __name__ == "__main__":
     prog = Programme()
     prog.import_sr()
+    prog.executer()
     # regarder la liste pour vérifier que tout marche bien :
-    print(prog.homogenise())
+    # test = commande()
+    # prog.homogenise(test)
     # prog.gestion_commandes()
+
