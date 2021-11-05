@@ -6,6 +6,9 @@ mapile = pile()
 
 
 def commande():
+    """
+    interface utilisateur pour entrer les commandes
+    """
 
     entre = 0
 

@@ -17,7 +17,7 @@ class Programme:
         pass
 
     def gestion_commandes(self):
-        pass
+        commande()
 
     def import_sr(self, nom_fich=fich_sr):
         """
@@ -110,3 +110,4 @@ if __name__ == "__main__":
     prog.import_sr()
     # regarder la liste pour vérifier que tout marche bien :
     print(prog.homogenise())
+    # prog.gestion_commandes()
