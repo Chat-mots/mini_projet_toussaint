@@ -163,10 +163,8 @@ if __name__ == "__main__":
     chaine.ajouter('c')
     # print(chaine.inserer("poil", 2))
     print(chaine.trouver("a"))
-    # print(chaine.supprimer(2))
+    print(chaine.supprimer(2))
     # print(chaine.parcourir())
     # chaine.supprimer(0)
-    # print(chaine.parcourir())
+    print(chaine.parcourir())
     # print(chaine.racine.suivant.contenu)
-
-x = 3
