@@ -65,16 +65,20 @@ class liste_chainee_AA:
         cellule'''
         cel_courant = self.racine.suivant
 
-        while cel_courant.suivant is not None:  # On affiche chaque élément de
-            # la liste
+        if cel_courant.suivant is None:  # S'il y a qu'un seul élément dans la
+            # liste après la racine
             cel_courant.afficher()
-            print("\n")
-            cel_courant = cel_courant.suivant
-
-            if cel_courant.suivant is None:  # On affiche le dernier élément,
-                # pas pris en compte par la boucle précédente
+        else:
+            while cel_courant.suivant is not None:  # On affiche chaque élément
+                # de la liste
                 cel_courant.afficher()
                 print("\n")
+                cel_courant = cel_courant.suivant
+
+                if cel_courant.suivant is None:  # On affiche le dernier
+                    # élément, pas pris en compte par la boucle précédente.
+                    cel_courant.afficher()
+                    print("\n")
 
     def inserer(self, contenu, cellule):
         '''
@@ -150,23 +154,18 @@ class liste_chainee_AA:
             if cel_courant.suivant is None:
                 err = True
                 print("Cellule à supprimer non existante dans la liste")
+            cel_courant = cel_courant.suivant
         if err is False:
             cel_courant.prec.suivant = cel_courant.suivant
-            cel_courant.suivant.prec = cel_courant.prec
+            if cel_courant.suivant is not None:
+                cel_courant.suivant.prec = cel_courant.prec
 
 
 chaine = liste_chainee_AA()
 
 if __name__ == "__main__":
     chaine.ajouter("a")
-    chaine.ajouter("b")
-    chaine.ajouter('c')
-    # print(chaine.inserer("poil", 2))
-    print(chaine.trouver("a"))
-    # print(chaine.supprimer(2))
-    # print(chaine.parcourir())
-    # chaine.supprimer(0)
-    # print(chaine.parcourir())
-    # print(chaine.racine.suivant.contenu)
-
-x = 3
+    futur_sup = chaine.ajouter("b")
+    # chaine.parcourir()
+    chaine.supprimer(futur_sup)
+    chaine.parcourir()
