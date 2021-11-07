@@ -71,16 +71,16 @@ class File_circ:
 
 if __name__ == "__main__":
     file = File_circ(6)
-    assert(file.est_vide()) is True
-    assert(file.tmax) == 6
-    assert(file.est_vide()) is True
+    assert(file.est_vide() is True)
+    assert(file.tmax == 6)
+    assert(file.est_vide() is True)
     for x in range(6):
         file.enfiler("test")
-    assert(file.index_fin) == 0
-    assert(file.nbr_elements) == 6
-    assert(file.est_vide()) is False
+    assert(file.index_fin == 0)
+    assert(file.nbr_elements == 6)
+    assert(file.est_vide() is False)
     for x in range(6):
         file.defiler()
-    assert(file.index_debut) == 0
-    assert(file.nbr_elements) == 0
+    assert(file.index_debut == 0)
+    assert(file.nbr_elements == 0)
     print("done")
