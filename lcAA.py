@@ -105,7 +105,6 @@ class liste_chaine_AA:
         liste_index = chaine.parcourir()
         trouvee = None
         baladeur = 0
-
         while trouvee != contenu:
             if baladeur > len(liste_index)-1:
                 print('contenu introuvable, il est inexistant')
