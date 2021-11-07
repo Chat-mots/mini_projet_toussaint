@@ -138,16 +138,22 @@ class liste_chaine_AA:
         return print("la cellule d'index ", cellule_sup, " a été supprimé")
 
 
-chaine = liste_chaine_AA()
-
 if __name__ == "__main__":
+    chaine = liste_chaine_AA()
+
     chaine.ajouter("a")
     chaine.ajouter("b")
+    assert chaine.racine.suivant.contenu == "a"
     chaine.ajouter('c')
-    print(chaine.inserer("poil", 2))
+    chaine.inserer("poil", 2)
+    # on vérifie que la cellule qui vient d'être inséré se trouve bien après
+    # la cellule "b", qui est en deuxieme position
+    assert chaine.racine.suivant.suivant.suivant.contenu == "poil"
     print(chaine.trouver("a"))
-    print(chaine.supprimer(2))
-    print(chaine.parcourir())
-    chaine.supprimer(0)
-    print(chaine.parcourir())
-    print(chaine.racine.suivant.contenu)
+    # on vérifie que que la cellule trouvé est identique à la "a"
+    # que l'on connait
+    assert chaine.trouver("a") == chaine.racine.suivant
+    chaine.supprimer(1)
+    chaine.parcourir()
+    # on vérifie que la nouvelle premiere valeur est b
+    assert chaine.racine.suivant.contenu == "b"
