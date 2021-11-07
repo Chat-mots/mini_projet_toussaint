@@ -107,8 +107,3 @@ class Programme:
 if __name__ == "__main__":
     prog = Programme()
     prog.executer()
-    # regarder la liste pour vérifier que tout marche bien :
-    # test = commande()
-    # prog.homogenise(test)
-    # prog.gestion_commandes()
-    # ceci est un commentaire de test pour un commit
