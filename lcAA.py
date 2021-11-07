@@ -1,37 +1,36 @@
 from cellule import *
 
 
-class liste_chainee_AA:
-    '''
-    Liste sous la forme d'une chaîne composée de maillons (cellules),
-    permettant l'insertion à n'importe quelle position d'un nouvel élément
-    Attributs :
-    -------------
-    racine => instance de cellule : Première cellule de la racine, vide de
-    contenu, servant à parcourir la liste
-    Méthodes :
-    -------------
-    est_vide : Renvoie True si la liste ne contient que la racine, ou False le
-    cas contraire
-    ajouter : Ajoutes une nouvelle cellule au bout de la liste
-    parcourir : Affiches chaque élément de la liste, sauf la racine
-    inserer : Inseres une nouvelle cellule après un certain maillon
-    trouver : Recherches un maillon selon son contenu et renvoit l'adresse
-    mémoire du premier maillon possédant le contenu en question
-    supprimer : Cherches un maillon avec une adresse particulière et le
-    supprime '''
+class liste_chaine_AA:
+    """
+     ATTRIBUTS :
+        classe definisant une liste chainée avant arrière
+     racine : CELLULE : la cellule racine de la liste
+
+     METHODES :
+     est_vide : -> BOOLEEN : retourne VRAI si la liste est vide, FAUX sinon.
+
+     ajouter : CELLULE -> CELLULE: ajoute une cellule à la fin de la liste et
+        retourne l'@ de la cellule
+
+     inserer : CELLULE,CONTENU -> CELLULE: ajoute une cellule après la
+        cellule c et retourne l'@ de la cellule
+
+     supprimer : supprime la cellule cellule_sup.
+
+     trouver: CONTENU -> CELLULE: retourne l'@ de la première cellule dont le
+        contenu est contenu.
+    """
 
     def __init__(self) -> None:
         self.racine = cellule()
-        self.racine.modifier("Je suis la racine")
 
     def est_vide(self):
-        '''
-        Fonction qui permet de savoir si la liste est vide
-        Renvoit :
-        -------------
-        True si la liste est vide
-        False inversement '''
+        """
+        permet de savoir si la lcaa est vide ou pas.
+        ---
+        renvoie True si c'est vide, False sinon
+        """
         if self.racine.suivant is None:
             return True
         else:
@@ -39,133 +38,117 @@ class liste_chainee_AA:
 
     def ajouter(self, c):
         '''
-        Fonction qui ajoutes une cellule à la fin de la liste
-        Paramètres :
-        -------------
-        c => N'importe quel type de données : Le contenu de la cellule qu'on
-        veut ajouter
-        Renvoit :
-        -------------
-        cell : l'adresse de la cellule crée et ajoutée'''
-        cell = cellule()  # Création de la cellule qui va être ajoutée
+        ajoute une cellule de contenu c à la fin de la lcaa
+        ---
+        c : contenu à ajouter, peut être n'importe quoi
+        ---
+        renvoie la cellule qui vient d'être ajouté
+        '''
+        cell = cellule()
         cell.modifier(c)
-        cel_courant = self.racine  # Permet de parcourir la liste
+        cel_courant = self.racine
 
-        while cel_courant.suivant is not None:  # On parcourt jusqu'à la fin
-            # de la liste
+        while cel_courant.suivant is not None:
             cel_courant = cel_courant.suivant
 
-        cell.prec = cel_courant  # On ajoute la cellule cell
+        cell.prec = cel_courant
         cel_courant.suivant = cell
         return cell
 
     def parcourir(self):
-        '''
-        Fonction qui parcourt la liste en affichant le contenu de chaque
-        cellule'''
-        cel_courant = self.racine.suivant
+        cel_courant = self.racine
+        liste_index = []
 
-        if cel_courant.suivant is None:  # S'il y a qu'un seul élément dans la
-            # liste après la racine
+        while cel_courant.suivant is not None:
+            liste_index.append(cel_courant)
             cel_courant.afficher()
-        else:
-            while cel_courant.suivant is not None:  # On affiche chaque élément
-                # de la liste
+            print("\n")
+            cel_courant = cel_courant.suivant
+
+            if cel_courant.suivant is None:
+                liste_index.append(cel_courant)
                 cel_courant.afficher()
                 print("\n")
-                cel_courant = cel_courant.suivant
+        return liste_index
 
-                if cel_courant.suivant is None:  # On affiche le dernier
-                    # élément, pas pris en compte par la boucle précédente.
-                    cel_courant.afficher()
-                    print("\n")
-
-    def inserer(self, contenu, cellule):
-        '''
-        Fonction qui crée une nouvelle cellule et l'insère après une certaine
-        cellule
-        Paramètres :
-        -------------
-        contenu => N'importe quel type de données: Le contenu de la future
-        cellule qu'on veut insérer
-        cellule => instance de cellule (adresse mémoire) : La cellule où on
-        veut insérer notre cellule
-        Renvoit :
-        -------------
-        ajout : l'adresse de la cellule nouvellement crée et
-        insérée'''
-        ajout = cellule()  # On crée la cellule qui va être insérée
-        ajout.modifier(cellule)
+    def inserer(self, p, c):
+        """
+        permet d'inserer une cellule de contenu p après la cellule d'index c
+        ----------
+        p: contenu de la cellule
+        c: index de la cellule
+        """
+        cel_ajout = cellule()
+        cel_ajout.modifier(p)
+        baladeur = 0
         cel_courant = self.racine
-        err = False
+        objectif = c
+        cel_courant_suivant = self.racine
 
-        if cellule.suivant is None:  # Si on souhaite insérer une cellule au
-            # bout de la file, on fait alors un ajout à la place
-            ajout = self.ajouter(contenu)
-        else:
+        while baladeur != objectif:
+            cel_courant = cel_courant.suivant
+            baladeur += 1
+            if cel_courant.suivant is None:
+                return "la valeur entrée est out of range"
+        baladeur = 0
 
-            while cel_courant != cellule:
-                if cel_courant.suivant is None:  # Si "cellule" n'existe pas
-                    print("La cellule donnée n'existe pas dans la liste")
-                    err = True
-                cel_courant = cel_courant.suivant
-            if err is False:  # Si on a bien trouvée "cellule"
-                ajout.suivant = cel_courant.suivant
-                ajout.prec = cel_courant
-                cel_courant.suivant.prec = ajout
-                cel_courant.suivant = ajout
+        while baladeur != objectif+1:
+            cel_courant_suivant = cel_courant_suivant.suivant
+            baladeur += 1
 
-                return cel_courant
+        cel_ajout.prec = cel_courant
+        cel_ajout.suivant = cel_courant_suivant
+        cel_courant_suivant.prec = cel_ajout
+        cel_courant.suivant = cel_ajout
 
     def trouver(self, contenu):
-        '''
-        Fonction qui recherche une cellule dans la liste avec un certain
-        contenu
-        Paramètres :
-        -------------
-        contenu => N'importe quel type de donnée : Le contenu à rechercher
-        dans la liste
-        Renvoit :
-        -------------
-        cel_courant : L'adresse de la première cellule contenant le contenu
-        recherché '''
-        cel_courant = self.racine
-        err = False
-        while cel_courant.contenu != contenu:
-            if cel_courant.suivant is None:  # Si aucune cellule ne possède
-                # comme contenu le paramètre
-                print("Aucune cellule trouvée")
-                err = True
-            cel_courant = cel_courant.suivant
-        if err is False:
-            return cel_courant
+        liste_index = chaine.parcourir()
+        trouvee = None
+        baladeur = 0
+
+        while trouvee != contenu:
+            if baladeur > len(liste_index)-1:
+                print('contenu introuvable, il est inexistant')
+                return "introuvable"
+            if liste_index[baladeur].contenu == contenu:
+                trouvee = contenu
+            baladeur += 1
+
+        return liste_index[baladeur-1]
 
     def supprimer(self, cellule_sup):
-        '''
-        Fonction qui supprime une cellule de la liste
-        Paramètres :
-        -------------
-        cellule_sup => instance de cellule : La cellule que l'on veut
-        supprimer'''
+        baladeur = 0
+        liste_index = chaine.parcourir()
         cel_courant = self.racine
-        err = False
-        while cel_courant != cellule_sup:  # Si "cellule_sup" n'existe pas dans
-            # la liste
-            if cel_courant.suivant is None:
-                err = True
-                print("Cellule à supprimer non existante dans la liste")
+        cel_prec = self.racine
+        cel_suiv = self.racine
+
+        for x in range(cellule_sup):
             cel_courant = cel_courant.suivant
-        if err is False:
-            cel_courant.prec.suivant = cel_courant.suivant
-            if cel_courant.suivant is not None:
-                cel_courant.suivant.prec = cel_courant.prec
+
+        for h in range(cellule_sup-1):
+            cel_prec = cel_prec.suivant
+
+        for w in range(cellule_sup+1):
+            cel_suiv = cel_suiv.suivant
+
+        cel_prec.suivant = cel_suiv
+        if cel_suiv is not None:
+            cel_suiv.prec = cel_prec
+
+        return print("la cellule d'index ", cellule_sup, " a été supprimé")
 
 
-chaine = liste_chainee_AA()
+chaine = liste_chaine_AA()
 
 if __name__ == "__main__":
     chaine.ajouter("a")
-    futur_sup = chaine.ajouter("b")
-    # chaine.parcourir()
-    chaine.supprimer(futur_sup)
-    chaine.parcourir()
+    chaine.ajouter("b")
+    chaine.ajouter('c')
+    print(chaine.inserer("poil", 2))
+    print(chaine.trouver("a"))
+    print(chaine.supprimer(2))
+    print(chaine.parcourir())
+    chaine.supprimer(0)
+    print(chaine.parcourir())
+    print(chaine.racine.suivant.contenu)
