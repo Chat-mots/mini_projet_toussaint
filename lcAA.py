@@ -140,25 +140,44 @@ class liste_chainee_AA:
         if err is False:
             return cel_courant
 
-    def supprimer(self, cellule_sup):
+#    def supprimer(self, cellule_sup):
+#        '''
+#        Fonction qui supprime une cellule de la liste
+#        Paramètres :
+#        -------------
+#        cellule_sup => instance de cellule : La cellule que l'on veut
+#        supprimer'''
+#        cel_courant = self.racine
+#        if self.racine == None:
+#            print("u r a faggot")
+#        err = False
+#        while cel_courant != cellule_sup:  # Si "cellule_sup" n'existe pas dans
+#            # la liste
+#            if cel_courant.suivant is None:
+#                err = True
+#                print("Cellule à supprimer non existante dans la liste")
+#            cel_courant = cel_courant.suivant
+#        if err is False:
+#            cel_courant.prec.suivant = cel_courant.suivant
+#            if cel_courant.suivant is not None:
+#                cel_courant.suivant.prec = cel_courant.prec
+
+    def supprimer(self, cell):
         '''
         Fonction qui supprime une cellule de la liste
         Paramètres :
         -------------
-        cellule_sup => instance de cellule : La cellule que l'on veut
-        supprimer'''
-        cel_courant = self.racine
-        err = False
-        while cel_courant != cellule_sup:  # Si "cellule_sup" n'existe pas dans
-            # la liste
-            if cel_courant.suivant is None:
-                err = True
-                print("Cellule à supprimer non existante dans la liste")
-            cel_courant = cel_courant.suivant
-        if err is False:
-            cel_courant.prec.suivant = cel_courant.suivant
-            if cel_courant.suivant is not None:
-                cel_courant.suivant.prec = cel_courant.prec
+        cellule_sup => instance de cellule : La cellule que l'on veut 
+        supprimer (ne devrais jamais être la racine)'''
+        
+        print(type(cell))
+        if cell.prec is not None:
+            cell.prec.suivant = cell.suivant
+        if cell.suivant is not None:
+            cell.suivant.prec = cell.prec
+
+        del cell
+
 
 
 chaine = liste_chainee_AA()

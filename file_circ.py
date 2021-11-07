@@ -17,6 +17,7 @@ class File_circ:
     """
 
     def __init__(self, n):
+        assert(n > 0), "Une file doit avoir au moint un élément !"
         self.file = [None for x in range(n)]
         self.tmax = n
         self.index_debut = 0
@@ -37,13 +38,10 @@ class File_circ:
         enfile l'objet "element" dans la file selon la règle du
             premier entré, premier sorti
         """
-        if self.nbr_elements < 6:
+        if self.nbr_elements < self.tmax:
             self.file[self.index_fin] = element
             self.nbr_elements += 1
-            if self.index_fin < self.tmax - 1:
-                self.index_fin += 1
-            elif self.index_fin == self.tmax - 1:
-                self.index_fin = 0
+            self.index_fin = (self.index_fin + 1) % self.tmax
 
     def defiler(self):
         """
@@ -52,10 +50,7 @@ class File_circ:
         """
         if self.est_vide() is False:
             element = self.file[self.index_debut]
-            if self.index_debut == 5:
-                self.index_debut = 0
-            else:
-                self.index_debut += 1
+            self.index_debut = (self.index_debut + 1) % self.tmax
             self.nbr_elements -= 1
             return element
 
@@ -63,24 +58,21 @@ class File_circ:
         """
         renvoie le nombre d'élément présent dans la file
         """
-        nbr = self.index_fin-self.index_debut
-        if nbr == - 1:
-            nbr = 6
-        return nbr
+        return self.nbr_elements
 
 
 if __name__ == "__main__":
     file = File_circ(6)
-    assert(file.est_vide()) is True
-    assert(file.tmax) == 6
-    assert(file.est_vide()) is True
+    assert(file.est_vide())
+    assert(file.tmax == 6)
+    assert(file.est_vide())
     for x in range(6):
         file.enfiler("test")
-    assert(file.index_fin) == 0
-    assert(file.nbr_elements) == 6
-    assert(file.est_vide()) is False
+    assert(file.index_fin == 0)
+    assert(file.nbr_elements == 6)
+    assert(not file.est_vide())
     for x in range(6):
         file.defiler()
-    assert(file.index_debut) == 0
-    assert(file.nbr_elements) == 0
+    assert(file.index_debut == 0)
+    assert(file.nbr_elements == 0)
     print("done")

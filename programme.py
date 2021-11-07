@@ -94,14 +94,16 @@ class Programme:
         # pas obligatoire, vérification que la file est correcte
         print("la file ressemble à ceci : ", mafile.file)
 
-        return mafile.file
+        return mafile
 
     def transfert_file(self, lc):
         pass
 
     def executer(self):
         ex = commande()
-        self.homogenise(ex)
+        file = self.homogenise(ex)
+        while (not file.est_vide()):
+            print(file.defiler())
 
 
 if __name__ == "__main__":

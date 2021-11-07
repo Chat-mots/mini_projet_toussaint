@@ -32,7 +32,10 @@ class File:
         Méthode qui supprime le premier élément entré dans la file
         """
         if self.est_vide() is False:
+            result = self.file[0]
             del(self.file[0])
+            return result
+
 
     def est_vide(self):
         """
@@ -69,9 +72,9 @@ if __name__ == "__main__":
     F1.enfiler("TLEFT")
     F1.enfiler("D")
     F1.enfiler("Q")
-    assert F1.nombre_elements() == 4
-    assert F1.sommet() == "Q"
+    assert(F1.nombre_elements() == 4)
+    assert(F1.sommet() == "Q")
     F1.defiler()
-    assert F1.nombre_elements() == 3
+    assert (F1.nombre_elements() == 3)
     F1.defilage_complet()
-    assert F1.nombre_elements() == 0
+    assert(F1.nombre_elements() == 0)
