@@ -74,10 +74,10 @@ TAD dont le fonctionnement est l'empilement/depilement : L'element entre en dern
 Chaque classe devra être vérifiée : Qu'elle respecte bien la documentation (bon noms d'attributs/méthodes et qu'elle fonctionne comme indiqué) et qu'elle possède son jeu de test (avec utilisation de assert et de la vérification du __name__ == "__main__").
 Les classes sont :
 <ul>
-    <li>La classe <strong> pile </strong> (pas d'élève défini)
+    <li>La classe <strong> pile </strong> (Noah)
     <li> La classe <strong> lcaa </strong> (Léandre)
-    <li> La classe <strong> file </strong> (pas d'élève défini)
+    <li> La classe <strong> file </strong> (Ethan)
     <li> La classe <strong> programme </strong> (Victor)
 </ul>
-Egalement, un dernier élèvre devra s'occuper de la conformité pep8 de CHAQUE classe (pas d'élève défini).
+Egalement, un dernier élèvre devra s'occuper des asserts (Pier)
 
