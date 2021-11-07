@@ -100,6 +100,9 @@ class Programme:
         pass
 
     def executer(self):
+        """
+        lance tout le programme, demande des inputs de l'utilisateur
+        """
         ex = commande()
         self.homogenise(ex)
 
