@@ -29,7 +29,7 @@ class Programme:
         with open(nom_fich, 'r') as sr:
             lignes = sr.readlines()
             for ligne in lignes:
-                liste = liste_chaine_AA()
+                liste = liste_chainee_AA()
                 ligne = ligne[:-1]
                 ligne = ligne.split(";")
                 liste.racine.contenu = ligne[0]
@@ -37,9 +37,6 @@ class Programme:
                     liste.ajouter(ligne[x])
                 commandes_base.append(liste.racine.contenu)
                 commandes_sr.append(liste)
-
-    def trouver_sr(self, nom):
-        pass
 
     def homogenise(self, pilerecu):
         """
@@ -49,7 +46,7 @@ class Programme:
         ---
         renvoie une file de toutes les actions que devra effectuer le robot
         """
-        lcaa = liste_chaine_AA()
+        lcaa = liste_chainee_AA()
         cel_lcaa = lcaa.racine
         index = 0
         # self.pile = ['UP', 'INIT', 'DOWN']
