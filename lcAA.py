@@ -165,19 +165,7 @@ chaine = liste_chainee_AA()
 
 if __name__ == "__main__":
     chaine.ajouter("a")
-<<<<<<< HEAD
     futur_sup = chaine.ajouter("b")
     # chaine.parcourir()
     chaine.supprimer(futur_sup)
     chaine.parcourir()
-=======
-    chaine.ajouter("b")
-    chaine.ajouter('c')
-    # print(chaine.inserer("poil", 2))
-    print(chaine.trouver("a"))
-    print(chaine.supprimer(2))
-    # print(chaine.parcourir())
-    # chaine.supprimer(0)
-    print(chaine.parcourir())
-    # print(chaine.racine.suivant.contenu)
->>>>>>> f6a9c61519c1ec324bf3fe0a4e1aeb3e3b62b268
