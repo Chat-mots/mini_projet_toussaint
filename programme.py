@@ -1,6 +1,5 @@
 from sys import intern
 from file import File
-from file_circ import *
 from pile import *
 from config import *
 from lcAA import *
@@ -49,7 +48,6 @@ class Programme:
         lcaa = liste_chaine_AA()
         cel_lcaa = lcaa.racine
         index = 0
-        # self.pile = ['UP', 'INIT', 'DOWN']
         save = pilerecu
         self.pile = copy.deepcopy(save)
 
