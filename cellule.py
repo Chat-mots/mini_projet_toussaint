@@ -37,5 +37,9 @@ class cellule:
 if __name__ == "__main__":
     cel = cellule()
     cel.modifier("valeur")
-    print(cel.contenu)
+    assert cel.contenu == "valeur"
+    cel.modifier("valeur2")
+    assert cel.contenu == "valeur2"
+    assert cel.suivant is None
+    assert cel.prec is None
     cel.afficher()
