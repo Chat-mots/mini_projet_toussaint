@@ -56,6 +56,9 @@ class liste_chaine_AA:
         return cell
 
     def parcourir(self):
+        """
+        parcours la lcaa en affichant ses cellules
+        """
         cel_courant = self.racine
         liste_index = []
 
@@ -102,13 +105,20 @@ class liste_chaine_AA:
         cel_courant.suivant = cel_ajout
 
     def trouver(self, contenu):
+        """
+        trouve la première cellule dans la lcaa du contenu recherché
+        ---
+        contenu -> contenu recherché
+        ---
+        renvoie None si introuvable, la cellule correspondante si trouvée
+        """
         liste_index = chaine.parcourir()
         trouvee = None
         baladeur = 0
         while trouvee != contenu:
             if baladeur > len(liste_index)-1:
                 print('contenu introuvable, il est inexistant')
-                return "introuvable"
+                return None
             if liste_index[baladeur].contenu == contenu:
                 trouvee = contenu
             baladeur += 1
@@ -116,6 +126,13 @@ class liste_chaine_AA:
         return liste_index[baladeur-1]
 
     def supprimer(self, cellule_sup):
+        """
+        supprime une cellule de la chaine d'index cellule_sup
+        ---
+        cellule_sup -> index de la cellule à supprimer
+        ---
+        renvoie la cellule supprimé
+        """
         baladeur = 0
         liste_index = chaine.parcourir()
         cel_courant = self.racine
@@ -135,7 +152,8 @@ class liste_chaine_AA:
         if cel_suiv is not None:
             cel_suiv.prec = cel_prec
 
-        return print("la cellule d'index ", cellule_sup, " a été supprimé")
+        print("la cellule d'index ", cellule_sup, " a été supprimé")
+        return cellule_sup
 
 
 if __name__ == "__main__":
@@ -153,6 +171,7 @@ if __name__ == "__main__":
     # on vérifie que que la cellule trouvé est identique à la "a"
     # que l'on connait
     assert chaine.trouver("a") == chaine.racine.suivant
+    assert chaine.trouver("impossible") is None
     chaine.supprimer(1)
     chaine.parcourir()
     # on vérifie que la nouvelle premiere valeur est b
